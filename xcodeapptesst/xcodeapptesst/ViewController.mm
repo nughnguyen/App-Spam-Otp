@@ -106,7 +106,7 @@
     
     // Tạo UILabel cho chân app
     self.footerLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, self.view.frame.size.height - 80, self.view.frame.size.width - 40, 40)];
-    self.footerLabel.text = NSSENCRYPT("@dothanh1110");
+    self.footerLabel.text = NSSENCRYPT("@YoungGumballZ");
     self.footerLabel.textAlignment = NSTextAlignmentCenter;
     self.footerLabel.textColor = [UIColor whiteColor]; // Đặt màu chữ cho nổi bật trên nền đen
     self.footerLabel.userInteractionEnabled = YES;
@@ -350,7 +350,7 @@
     });
 }
 - (void)footerLabelTapped:(id)sender {
-    NSURL *url = [NSURL URLWithString:NSSENCRYPT("https://t.me/dothanh1110")];
+    NSURL *url = [NSURL URLWithString:NSSENCRYPT("https://www.facebook.com/hungnq188.2k5")];
     [[UIApplication sharedApplication] openURL:url options:@{} completionHandler:nil];
 }
 
