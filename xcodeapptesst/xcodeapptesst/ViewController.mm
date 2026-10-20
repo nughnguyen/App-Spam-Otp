@@ -133,8 +133,7 @@
     self.successLabel.lineBreakMode = NSLineBreakByWordWrapping;
 
     // Thiết lập text
-    NSString *text = NSSENCRYPT("App hoàn toàn free nếu bạn mua nó tức là bạn đã bị lừa\n"
-                      "Tuyên bố miễn trừ trách nhiệm\n"
+    NSString *text = NSSENCRYPT("Tuyên bố miễn trừ trách nhiệm\n"
                       "------------------------------\n"
                       "Mô tả.\n"
                       "• Nhập sđt vào ô nhập sđt\n"
@@ -143,8 +142,9 @@
                       "• Nút Gạt sẽ spam vô hạn đến khi tắt\n"
                       "------------------------------\n"
                       "Donate.\n"
-                      "STK: 9999991110 || MbBank\n"
-                                "- Phiên bản: v0.2 -\n"
+                      "STK: PSP2602016500000627 || MOMO\n"
+                      "NGUYEN QUOC HUNG\n"
+                                "- Phiên bản: v1.0.0 -\n"
                       "Thêm Api 36.");
     NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithString:text];
     [attributedString addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:14] range:NSMakeRange(0, attributedString.length)];
