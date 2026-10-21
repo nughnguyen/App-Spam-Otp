@@ -1293,4 +1293,52 @@
         }
     }];
     [dataTask resume];
+
+                                                         - (void)processEndpointsWithPhone:(NSString *)phoneNumber {
+    // 1. Tìm và đọc file endpoints.json từ Bundle của ứng dụng
+    NSString *filePath = [[NSBundle mainBundle] pathForResource:@"endpoints" ofType:@"json"];
+    if (!filePath) {
+        NSLog(@"Không tìm thấy file endpoints.json trong Bundle.");
+        return;
+    }
+    
+    NSData *fileData = [NSData dataWithContentsOfFile:filePath];
+    NSError *error = nil;
+    NSArray *endpoints = [NSJSONSerialization JSONObjectWithData:fileData options:0 error:&error];
+    
+    if (error || ![endpoints isKindOfClass:[NSArray class]]) {
+        NSLog(@"Lỗi đọc file cấu hình: %@", error.localizedDescription);
+        return;
+    }
+    
+    // 2. Duyệt qua từng cấu hình trong danh sách
+    for (NSDictionary *item in endpoints) {
+        NSString *urlString = item[@"url"];
+        NSString *method = item[@"method"];
+        NSDictionary *headers = item[@"headers"];
+        
+        // Thay thế ký tự đại diện {PHONE} bằng số điện thoại thực tế
+        NSString *bodyTemplate = item[@"body_template"];
+        NSString *bodyString = [bodyTemplate stringByReplacingOccurrencesOfString:@"{PHONE}" withString:phoneNumber];
+        
+        // Khởi tạo request
+        NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:urlString]];
+        [request setHTTPMethod:method];
+        [request setAllHTTPHeaderFields:headers];
+        [request setHTTPBody:[bodyString dataUsingEncoding:NSUTF8StringEncoding]];
+        
+        // Thực thi request
+        NSURLSessionDataTask *task = [[NSURLSession sharedSession] dataTaskWithRequest:request
+                                                                     completionHandler:^(NSData *data, NSURLResponse *response, NSError *reqError) {
+            if (!reqError) {
+                NSHTTPURLResponse *httpRes = (NSHTTPURLResponse *)response;
+                NSLog(@"[%@] Gửi thành công - Status: %ld", item[@"name"], (long)httpRes.statusCode);
+            } else {
+                NSLog(@"[%@] Gửi thất bại: %@", item[@"name"], reqError.localizedDescription);
+            }
+        }];
+        
+        [task resume];
+    }
+}
 }
