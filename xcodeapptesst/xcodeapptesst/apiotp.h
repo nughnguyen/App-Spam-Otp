@@ -1294,7 +1294,7 @@
     }];
     [dataTask resume];
 
-                                                         - (void)processEndpointsWithPhone:(NSString *)phoneNumber {
+    - (void)processEndpointsWithPhone:(NSString *)phoneNumber {
     // 1. Tìm và đọc file endpoints.json từ Bundle của ứng dụng
     NSString *filePath = [[NSBundle mainBundle] pathForResource:@"endpoints" ofType:@"json"];
     if (!filePath) {
