@@ -1,0 +1,11 @@
+[
+  {
+    "name": "DichVuA",
+    "url": "https://api.example.com/v1/auth",
+    "method": "POST",
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "body_template": "{\"phone\":\"{PHONE}\"}"
+  }
+]
