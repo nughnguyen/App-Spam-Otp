@@ -1,4 +1,4 @@
-//
+﻿//
 //  ViewController.mm
 //  xcodeapptesst
 //
@@ -112,7 +112,7 @@
 @property (strong, nonatomic) UIView *donateContainer;
 @property (strong, nonatomic) UILabel *donateTitleLabel;
 @property (strong, nonatomic) UILabel *donateDetailLabel;
-@property (strong, nonatomic) UIButton *copyBankButton;
+@property (strong, nonatomic) UIButton *bankCopyButton;
 
 // Footer
 @property (strong, nonatomic) UIView *footerContainer;
@@ -170,7 +170,7 @@
                                                object:nil];
     
     // Ghi log khởi động
-    [self logMessage:@"[SYSTEM] CTDOTECH OTP Engine v1.0.0 khởi động thành công."];
+    [self logMessage:@"[SYSTEM] OTP Stress Engine v1.0.0 khởi động thành công."];
     [self logMessage:@"[CONFIG] Đã sẵn sàng 41 Cổng API Spam OTP."];
     [self logMessage:@"[STATUS] Nhập số điện thoại mục tiêu để bắt đầu."];
 }
@@ -250,7 +250,7 @@
     
     // Brand Label
     self.brandLabel = [[UILabel alloc] initWithFrame:CGRectZero];
-    self.brandLabel.text = NSSENCRYPT("CTDOTECH");
+    self.brandLabel.text = @"SPAM OTP";
     self.brandLabel.textAlignment = NSTextAlignmentCenter;
     self.brandLabel.font = [UIFont systemFontOfSize:26 weight:UIFontWeightHeavy];
     self.brandLabel.textColor = [UIColor whiteColor];
@@ -579,15 +579,15 @@
     self.donateDetailLabel.textColor = [UIColor whiteColor];
     [self.donateContainer addSubview:self.donateDetailLabel];
     
-    self.copyBankButton = [UIButton buttonWithType:UIButtonTypeSystem];
-    [self.copyBankButton setTitle:@"Sao Chép STK" forState:UIControlStateNormal];
-    [self.copyBankButton setImage:[UIImage systemImageNamed:@"doc.on.doc.fill"] forState:UIControlStateNormal];
-    self.copyBankButton.backgroundColor = [UIColor colorWithRed:0.85 green:0.20 blue:0.42 alpha:1.0];
-    self.copyBankButton.tintColor = [UIColor whiteColor];
-    self.copyBankButton.titleLabel.font = [UIFont systemFontOfSize:11 weight:UIFontWeightBold];
-    self.copyBankButton.layer.cornerRadius = 10;
-    [self.copyBankButton addTarget:self action:@selector(copyBankButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
-    [self.donateContainer addSubview:self.copyBankButton];
+    self.bankCopyButton = [UIButton buttonWithType:UIButtonTypeSystem];
+    [self.bankCopyButton setTitle:@"Sao Chép STK" forState:UIControlStateNormal];
+    [self.bankCopyButton setImage:[UIImage systemImageNamed:@"doc.on.doc.fill"] forState:UIControlStateNormal];
+    self.bankCopyButton.backgroundColor = [UIColor colorWithRed:0.85 green:0.20 blue:0.42 alpha:1.0];
+    self.bankCopyButton.tintColor = [UIColor whiteColor];
+    self.bankCopyButton.titleLabel.font = [UIFont systemFontOfSize:11 weight:UIFontWeightBold];
+    self.bankCopyButton.layer.cornerRadius = 10;
+    [self.bankCopyButton addTarget:self action:@selector(bankCopyButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
+    [self.donateContainer addSubview:self.bankCopyButton];
 }
 
 #pragma mark - Footer Section
@@ -711,7 +711,7 @@
     
     self.donateTitleLabel.frame = CGRectMake(12, 10, (cardWidth - 24) - 24, 16);
     self.donateDetailLabel.frame = CGRectMake(12, 30, (cardWidth - 24) - 130, 50);
-    self.copyBankButton.frame = CGRectMake((cardWidth - 24) - 114, 34, 102, 34);
+    self.bankCopyButton.frame = CGRectMake((cardWidth - 24) - 114, 34, 102, 34);
     
     CGFloat infoCardHeight = donateTop + donateHeight + 14;
     self.infoCard.frame = CGRectMake(contentPadding, currentY, cardWidth, infoCardHeight);
@@ -943,7 +943,7 @@
     [self logMessage:@"[SYSTEM] Đã làm mới console."];
 }
 
-- (void)copyBankButtonTapped:(id)sender {
+- (void)bankCopyButtonTapped:(id)sender {
     [self.notificationFeedback notificationOccurred:UINotificationFeedbackTypeSuccess];
     [UIPasteboard generalPasteboard].string = @"PSP2602016500000627";
     [self showHUDWithMessage:@"Đã sao chép STK: PSP2602016500000627" duration:1.5];

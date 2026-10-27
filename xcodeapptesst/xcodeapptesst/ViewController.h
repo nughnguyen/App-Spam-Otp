@@ -9,7 +9,7 @@
 @interface ViewController : UIViewController
 
 @property (weak, nonatomic) IBOutlet UILabel *apiLabel;
-@property (weak, nonatomic) IBOutlet UILabel *ctdoTechLabel;
+@property (weak, nonatomic) IBOutlet UILabel *appTitleLabel;
 - (IBAction)runButtonTapped:(UIButton *)sender;
 
 @end

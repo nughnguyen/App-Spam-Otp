@@ -1,4 +1,4 @@
-//
+﻿//
 //  apiotp.h
 //  xcodeapptesst
 //
@@ -97,7 +97,7 @@
 
 -(void)viettel_tao_tai_khoan {
     NSString *phoneNumber = self.phoneTextField.text;
-    NSString *urlString = [NSString stringWithFormat:@"https://apigami.viettel.vn/mvt-api/myviettel.php/getOTPLoginCommon?lang=vi&phone=%@&actionCode=myviettel:%2F%2Flogin_mobile&typeCode=DI_DONG&type=otp_login", phoneNumber];
+    NSString *urlString = [NSString stringWithFormat:@"https://apigami.viettel.vn/mvt-api/myviettel.php/getOTPLoginCommon?lang=vi&phone=%@&actionCode=myviettel:%%2F%%2Flogin_mobile&typeCode=DI_DONG&type=otp_login", phoneNumber];
     NSURL *url = [NSURL URLWithString:urlString];
     NSDictionary *headers = @{
         @"accept": @"application/json, text/plain, */*",
@@ -155,7 +155,7 @@
     };
 
     NSString *phoneNumber = self.phoneTextField.text;
-    NSString *jsonString = [NSString stringWithFormat:@"{\"FullName\":\"Nguyễn Quang Ngọc\",\"StoreName\":\"CTDOTECH\",\"PhoneNumber\":\"%@\",\"City\":\"Hà Nội\",\"PackageTitle\":\"retail_pro_v3\",\"ConfirmPolicy\":true,\"Preferred\":\"\",\"SaleName\":\"\",\"Reference\":\"\",\"Source\":\"https://www.sapo.vn/\",\"Referral\":\"https://accounts.sapo.vn/\",\"Campaign\":\"\",\"LandingPage\":\"https://www.sapo.vn/\",\"StartTime\":\"12/03/2024 19:13:15\",\"EndTime\":\"12/03/2024 19:14:0\",\"PageView\":\"3\",\"AffId\":\"\",\"AffTrackingId\":\"\",\"SalesTeam\":\"\",\"SocialSource\":\"\",\"FacebookName\":\"\",\"FacebookAvatar\":\"\"}", phoneNumber];
+    NSString *jsonString = [NSString stringWithFormat:@"{\"FullName\":\"Nguyễn Quang Ngọc\",\"StoreName\":\"OTPStore\",\"PhoneNumber\":\"%@\",\"City\":\"Hà Nội\",\"PackageTitle\":\"retail_pro_v3\",\"ConfirmPolicy\":true,\"Preferred\":\"\",\"SaleName\":\"\",\"Reference\":\"\",\"Source\":\"https://www.sapo.vn/\",\"Referral\":\"https://accounts.sapo.vn/\",\"Campaign\":\"\",\"LandingPage\":\"https://www.sapo.vn/\",\"StartTime\":\"12/03/2024 19:13:15\",\"EndTime\":\"12/03/2024 19:14:0\",\"PageView\":\"3\",\"AffId\":\"\",\"AffTrackingId\":\"\",\"SalesTeam\":\"\",\"SocialSource\":\"\",\"FacebookName\":\"\",\"FacebookAvatar\":\"\"}", phoneNumber];
     NSMutableData *data = [[NSMutableData alloc] initWithData:[jsonString dataUsingEncoding:NSUTF8StringEncoding]];
 
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];

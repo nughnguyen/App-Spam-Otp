@@ -1,4 +1,4 @@
-# App Spam OTP (CTDOTECH) ⚡
+﻿# App Spam OTP ⚡
 
 Ứng dụng iOS native (Objective-C / Objective-C++) thực hiện kiểm thử độ tải (stress testing) và benchmark dịch vụ OTP qua 41 cổng API đồng thời (36 cổng mặc định + 5 cổng từ `endpoints.json`).
 
@@ -43,3 +43,4 @@ Dự án đã được tích hợp sẵn GitHub Actions CI/CD (`.github/workflow
 - **MOMO / Ngân hàng**: `PSP2602016500000627`
 - **Chủ tài khoản**: NGUYEN QUOC HUNG
 - **Facebook**: [hungnq188.2k5](https://www.facebook.com/hungnq188.2k5)
+
