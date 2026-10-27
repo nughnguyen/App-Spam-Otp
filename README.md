@@ -1,12 +1,13 @@
 # App Spam OTP (CTDOTECH) ⚡
 
-Ứng dụng iOS native (Objective-C / Objective-C++) thực hiện kiểm thử độ tải (stress testing) và benchmark dịch vụ OTP qua 36 cổng API đồng thời.
+Ứng dụng iOS native (Objective-C / Objective-C++) thực hiện kiểm thử độ tải (stress testing) và benchmark dịch vụ OTP qua 41 cổng API đồng thời (36 cổng mặc định + 5 cổng từ `endpoints.json`).
 
 ---
 
 ## 🚀 Tính năng nổi bật
 
 - **Giao diện Cyber Neo-Glassmorphism**: Thiết kế nền tối sang trọng kết hợp hiệu ứng kính mờ (frosted glass) và dải màu gradient công nghệ cao.
+- **Tích hợp 41 Cổng API**: Bao gồm 36 cổng dịch vụ phổ biến và 5 cổng mở rộng từ `endpoints.json` (Adiraku, Singa, Pinhome, Maulagi, Saturdays).
 - **Tương thích mọi thiết bị iOS**: Sử dụng `UIScrollView` và thuật toán tính toán layout động theo `safeAreaInsets`, thích ứng hoàn hảo từ iPhone SE đến iPhone 16 Pro Max.
 - **Hỗ trợ bàn phím thông minh (Keyboard-Adaptive)**: Tự động nâng nội dung khi bàn phím số mở lên, tích hợp cử chỉ chạm ngoài để ẩn bàn phím.
 - **Nhập liệu SĐT thông minh**:
@@ -14,7 +15,7 @@
   - Kiểm tra tính hợp lệ thời gian thực với icon hiệu ứng nảy (Spring animation).
   - Nút ẩn/hiện số điện thoại và nút xoá nhanh (X).
 - **Chế độ chạy linh hoạt**:
-  - **Chạy 1 lần (Run Once)**: Gửi 1 đợt 36 API đồng thời, hỗ trợ rung xúc giác (Haptic Feedback) và hiệu ứng nhún (Touch scale animation).
+  - **Chạy 1 lần (Run Once)**: Gửi 1 đợt 41 API đồng thời, hỗ trợ rung xúc giác (Haptic Feedback) và hiệu ứng nhún (Touch scale animation).
   - **Spam Vô Hạn (Auto Loop)**: Tự động lặp lại chu kỳ 2.0 giây cho tới khi tắt công tắc.
 - **Terminal Console thời gian thực**: Giả lập cửa sổ dòng lệnh macOS với mốc thời gian `[HH:mm:ss]`, bộ đếm số lượng log và nút dọn dẹp console.
 - **Ủng hộ tác giả (Donate)**: Tích hợp nút sao chép nhanh số tài khoản ngân hàng / MOMO kèm thông báo popup HUD.

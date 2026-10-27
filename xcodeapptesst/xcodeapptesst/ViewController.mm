@@ -10,7 +10,51 @@
 #import "mahoa.h"
 #import "MBProgressHUD.h"
 #import <WebKit/WebKit.h>
-#import <AudioToolbox/AudioToolbox.h>
+
+@interface ViewController (Endpoints)
+- (void)tv360;
+- (void)viettel_login_dang_nhap;
+- (void)viettel_tao_tai_khoan;
+- (void)sapo_tao_acc;
+- (void)modcha;
+- (void)vieon;
+- (void)fptshop;
+- (void)fptshop1;
+- (void)galaxyplay;
+- (void)Shine30;
+- (void)Shine30_test;
+- (void)cathay;
+- (void)dominos;
+- (void)batdongsan;
+- (void)fahase;
+- (void)shopiness;
+- (void)viettelpost;
+- (void)bibabo;
+- (void)owen;
+- (void)pnj;
+- (void)f88;
+- (void)heyu;
+- (void)thecoffee;
+- (void)dienmayxanh;
+- (void)kingfoodmart;
+- (void)ghn;
+- (void)lottemart;
+- (void)vayvnd;
+- (void)vato;
+- (void)nhathuoclongchau;
+- (void)vinamilk;
+- (void)glxplay;
+- (void)shopee;
+- (void)watsons;
+- (void)tokyolife;
+- (void)go2joy;
+// 5 New Endpoints from endpoints.json
+- (void)adiraku;
+- (void)singa;
+- (void)pinhome;
+- (void)maulagi;
+- (void)saturdays;
+@end
 
 @interface ViewController () <UITextFieldDelegate>
 
@@ -127,7 +171,7 @@
     
     // Ghi log khởi động
     [self logMessage:@"[SYSTEM] CTDOTECH OTP Engine v1.0.0 khởi động thành công."];
-    [self logMessage:@"[CONFIG] Đã sẵn sàng 36 Cổng API Spam OTP."];
+    [self logMessage:@"[CONFIG] Đã sẵn sàng 41 Cổng API Spam OTP."];
     [self logMessage:@"[STATUS] Nhập số điện thoại mục tiêu để bắt đầu."];
 }
 
@@ -220,7 +264,7 @@
     self.subtitleLabel.textColor = [UIColor colorWithRed:0.58 green:0.64 blue:0.72 alpha:1.0];
     [self.headerContainer addSubview:self.subtitleLabel];
     
-    // Status Pill Badge (36 APIs Ready)
+    // Status Pill Badge (41 APIs Ready)
     self.statusPill = [[UIView alloc] initWithFrame:CGRectZero];
     self.statusPill.backgroundColor = [UIColor colorWithRed:0.06 green:0.22 blue:0.15 alpha:0.8];
     self.statusPill.layer.cornerRadius = 12;
@@ -228,7 +272,7 @@
     self.statusPill.layer.borderColor = [UIColor colorWithRed:0.15 green:0.65 blue:0.38 alpha:0.4].CGColor;
     
     self.statusPillLabel = [[UILabel alloc] initWithFrame:CGRectZero];
-    self.statusPillLabel.text = @"● 36 APIs Ready";
+    self.statusPillLabel.text = @"● 41 APIs Ready";
     self.statusPillLabel.font = [UIFont systemFontOfSize:11 weight:UIFontWeightSemibold];
     self.statusPillLabel.textColor = [UIColor colorWithRed:0.20 green:0.83 blue:0.55 alpha:1.0];
     self.statusPillLabel.textAlignment = NSTextAlignmentCenter;
@@ -359,7 +403,8 @@
     [self.runButton.layer insertSublayer:self.runButtonGradient atIndex:0];
     
     [self.runButton addTarget:self action:@selector(runButtonTouchDown:) forControlEvents:UIControlEventTouchDown];
-    [self.runButton addTarget:self action:@selector(runButtonTouchUp:) forControlEvents:UIControlEventTouchUpInside | UIControlEventTouchUpOutside | UIControlEventTouchCancel];
+    UIControlEvents touchUpEvents = (UIControlEvents)(UIControlEventTouchUpInside | UIControlEventTouchUpOutside | UIControlEventTouchCancel);
+    [self.runButton addTarget:self action:@selector(runButtonTouchUp:) forControlEvents:touchUpEvents];
     [self.runButton addTarget:self action:@selector(runButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
     [self.actionCard addSubview:self.runButton];
     
@@ -386,7 +431,7 @@
     [self.loopContainer addSubview:self.loopTitleLabel];
     
     self.loopSubtitleLabel = [[UILabel alloc] initWithFrame:CGRectZero];
-    self.loopSubtitleLabel.text = @"Tự động lặp lại 36 API mỗi 2.0s";
+    self.loopSubtitleLabel.text = @"Tự động lặp lại 41 API mỗi 2.0s";
     self.loopSubtitleLabel.font = [UIFont systemFontOfSize:11 weight:UIFontWeightRegular];
     self.loopSubtitleLabel.textColor = [UIColor colorWithRed:0.58 green:0.64 blue:0.72 alpha:1.0];
     [self.loopContainer addSubview:self.loopSubtitleLabel];
@@ -500,7 +545,7 @@
     self.successLabel.lineBreakMode = NSLineBreakByWordWrapping;
     
     NSString *instructions = @"• Nhập đúng số điện thoại (định dạng 0xx.xxxxxxx).\n"
-                             @"• Nút Chạy: gửi 1 đợt kích hoạt đồng thời 36 cổng API.\n"
+                             @"• Nút Chạy: gửi 1 đợt kích hoạt đồng thời 41 cổng API.\n"
                              @"• Nút Gạt: tự động gửi lặp lại liên tục sau mỗi 2.0 giây.\n"
                              @"• Miễn trừ trách nhiệm: Ứng dụng phục vụ mục đích kiểm thử bảo mật & benchmark dịch vụ.";
     
@@ -552,7 +597,7 @@
     [self.contentView addSubview:self.footerContainer];
     
     self.footerLabel = [[UILabel alloc] initWithFrame:CGRectZero];
-    self.footerLabel.text = NSSENCRYPT("Developed by @YoungGumballZ ↗");
+    self.footerLabel.text = NSSENCRYPT("@YoungGumballZ");
     self.footerLabel.textAlignment = NSTextAlignmentCenter;
     self.footerLabel.font = [UIFont systemFontOfSize:12 weight:UIFontWeightMedium];
     self.footerLabel.textColor = [UIColor colorWithRed:0.45 green:0.55 blue:0.75 alpha:1.0];
@@ -813,7 +858,7 @@
     }];
 }
 
-- (void)runButtonTapped:(id)sender {
+- (IBAction)runButtonTapped:(UIButton *)sender {
     [self.view endEditing:YES];
     
     NSString *phone = self.phoneTextField.text ?: @"";
@@ -828,12 +873,12 @@
     
     self.currentHUD = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     self.currentHUD.mode = MBProgressHUDModeIndeterminate;
-    self.currentHUD.label.text = @"Đang Gửi 36 API Spam...";
+    self.currentHUD.label.text = @"Đang Gửi 41 API Spam...";
     self.currentHUD.bezelView.style = MBProgressHUDBackgroundStyleBlur;
     self.currentHUD.bezelView.backgroundColor = [UIColor colorWithRed:0.08 green:0.12 blue:0.18 alpha:0.85];
     self.currentHUD.contentColor = [UIColor whiteColor];
     
-    [self logMessage:[NSString stringWithFormat:@"[TRIGGER] Bắt đầu kích hoạt 36 API tới: %@", phone]];
+    [self logMessage:[NSString stringWithFormat:@"[TRIGGER] Bắt đầu kích hoạt 41 API tới: %@", phone]];
     
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         [self sendOTPAndNewOTPRequests];
@@ -972,9 +1017,10 @@
     [MBProgressHUD hideHUDForView:self.view animated:YES];
 }
 
-#pragma mark - All 36 API Requests Dispatcher
+#pragma mark - All 41 API Requests Dispatcher
 
 - (void)sendOTPAndNewOTPRequests {
+    // 36 Legacy Endpoints
     [self tv360];
     [self viettel_login_dang_nhap];
     [self viettel_tao_tai_khoan];
@@ -1011,6 +1057,13 @@
     [self watsons];
     [self tokyolife];
     [self go2joy];
+    
+    // 5 New Endpoints from endpoints.json
+    [self adiraku];
+    [self singa];
+    [self pinhome];
+    [self maulagi];
+    [self saturdays];
 }
 
 #pragma mark - Import Endpoints Implementation

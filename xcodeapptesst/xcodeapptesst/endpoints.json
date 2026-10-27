@@ -1,11 +1,68 @@
 [
   {
-    "name": "DichVuA",
-    "url": "https://api.example.com/v1/auth",
+    "name": "Adiraku",
+    "url": "https://prod.adiraku.co.id/ms-auth/auth/generate-otp-vdata",
     "method": "POST",
     "headers": {
-      "Content-Type": "application/json"
+      "Content-Type": "application/json; charset=utf-8"
     },
-    "body_template": "{\"phone\":\"{PHONE}\"}"
+    "body_template": "{\"mobileNumber\":\"{PHONE}\",\"type\":\"prospect-create\",\"channel\":\"whatsapp\"}"
+  },
+  {
+    "name": "Singa",
+    "url": "https://api102.singa.id/new/login/sendWaOtp?versionName=2.4.7&versionCode=153&platform=android",
+    "method": "POST",
+    "headers": {
+      "Content-Type": "application/json; charset=utf-8",
+      "User-Agent": "Mozilla/5.0 (Linux; Android 10)"
+    },
+    "body_template": "{\"mobile_phone\":\"+{PHONE}\",\"type\":\"mobile\",\"is_switchable\":1}"
+  },
+  {
+    "name": "Pinhome",
+    "url": "https://www.pinhome.id/api/pinaccount/request/otp",
+    "method": "POST",
+    "headers": {
+      "Host": "www.pinhome.id",
+      "Accept": "application/json",
+      "Authorization": "Bearer 13d2886acc908192d0c33325b44a617e5e3395481cc03cbfd67de34886399731",
+      "Content-Type": "application/json",
+      "User-Agent": "Mozilla/5.0 (Linux; Android 10)",
+      "Origin": "https://www.pinhome.id"
+    },
+    "body_template": "{\"accountType\":\"customers\",\"countryCode\":\"62\",\"medium\":\"whatsapp\",\"otpType\":\"register\",\"phoneNumber\":\"{PHONE}\"}"
+  },
+  {
+    "name": "Maulagi",
+    "url": "https://api.maulagi.id/api/v2/auth/check",
+    "method": "POST",
+    "headers": {
+      "accept": "application/json, text/plain, */*",
+      "content-type": "application/json",
+      "origin": "https://maulagi.id",
+      "referer": "https://maulagi.id/",
+      "user-agent": "Mozilla/5.0 (Linux; Android 14) Chrome/107.0.0.0 Mobile Safari/537.36",
+      "x-ml-key": "E32VCHXX32"
+    },
+    "body_template": "{\"credentials\":\"{PHONE}\"}"
+  },
+  {
+    "name": "Saturdays",
+    "url": "https://beta.api.saturdays.com/api/v1/user/otp/send",
+    "method": "POST",
+    "headers": {
+      "accept": "*/*",
+      "accept-language": "id-ID,id;q=0.9",
+      "content-type": "application/json",
+      "country-code": "ID",
+      "currency-code": "IDR",
+      "device-type": "mweb",
+      "origin": "https://saturdays.com",
+      "referer": "https://saturdays.com/",
+      "user-agent": "Mozilla/5.0 (Linux; Android 14) Chrome/107.0.0.0 Mobile Safari/537.36",
+      "platform": "mweb",
+      "x-api-key": "GCMUDiuY5a7WvyUNt9n3QztToSHzK7Uj"
+    },
+    "body_template": "{\"number\":\"{PHONE}\",\"country_code\":\"+62\",\"type\":\"\"}"
   }
 ]
