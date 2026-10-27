@@ -1,49 +1,44 @@
-# App Spam OTP
+# App Spam OTP (CTDOTECH) ⚡
 
-## Giới thiệu
-App Spam OTP là một ứng dụng đơn giản cho phép bạn gửi các yêu cầu OTP đến một số điện thoại cụ thể. Ứng dụng này có thể được xây dựng bằng Xcode hoặc sử dụng Theos để tạo ứng dụng trên iOS.
+Ứng dụng iOS native (Objective-C / Objective-C++) thực hiện kiểm thử độ tải (stress testing) và benchmark dịch vụ OTP qua 36 cổng API đồng thời.
 
-## Cách sử dụng
-Xây dựng ứng dụng với Theos
-1. **Cài đặt Theos**: Đảm bảo rằng bạn đã cài đặt Theos trên máy tính của mình.
-2. **Tạo dự án mới**: Sử dụng lệnh sau để tạo một dự án mới:
-```bash
-$THEOS/bin/nic.pl
-```
-3. **Chọn loại dự án**: `[3.] iphone/application`. (bằng cách nhập số 3)
+---
 
-4. **Nhập thông tin dự án**: Nhập các thông tin cần thiết như tên dự án, tác giả, v.v.
+## 🚀 Tính năng nổi bật
 
-5. **Chỉnh sửa dự án**: Mở dự án và thêm các file cần thiết vào dự án.
+- **Giao diện Cyber Neo-Glassmorphism**: Thiết kế nền tối sang trọng kết hợp hiệu ứng kính mờ (frosted glass) và dải màu gradient công nghệ cao.
+- **Tương thích mọi thiết bị iOS**: Sử dụng `UIScrollView` và thuật toán tính toán layout động theo `safeAreaInsets`, thích ứng hoàn hảo từ iPhone SE đến iPhone 16 Pro Max.
+- **Hỗ trợ bàn phím thông minh (Keyboard-Adaptive)**: Tự động nâng nội dung khi bàn phím số mở lên, tích hợp cử chỉ chạm ngoài để ẩn bàn phím.
+- **Nhập liệu SĐT thông minh**:
+  - Hỗ trợ nút **"Dán SĐT"** từ bộ nhớ tạm (tự động làm sạch dấu cách, ký tự đặc biệt, chuyển `+84` thành `0`).
+  - Kiểm tra tính hợp lệ thời gian thực với icon hiệu ứng nảy (Spring animation).
+  - Nút ẩn/hiện số điện thoại và nút xoá nhanh (X).
+- **Chế độ chạy linh hoạt**:
+  - **Chạy 1 lần (Run Once)**: Gửi 1 đợt 36 API đồng thời, hỗ trợ rung xúc giác (Haptic Feedback) và hiệu ứng nhún (Touch scale animation).
+  - **Spam Vô Hạn (Auto Loop)**: Tự động lặp lại chu kỳ 2.0 giây cho tới khi tắt công tắc.
+- **Terminal Console thời gian thực**: Giả lập cửa sổ dòng lệnh macOS với mốc thời gian `[HH:mm:ss]`, bộ đếm số lượng log và nút dọn dẹp console.
+- **Ủng hộ tác giả (Donate)**: Tích hợp nút sao chép nhanh số tài khoản ngân hàng / MOMO kèm thông báo popup HUD.
 
-6. **Cập nhật Makefile**: Khai báo các file cần thiết trong `Makefile`.
+---
 
-7. **Biên dịch dự án**: Sử dụng lệnh `make` để biên dịch dự án.
+## 🛠️ Đóng gói & Cài đặt (.IPA)
 
-## Sử dụng ứng dụng
-Nhập số điện thoại: Nhập số điện thoại vào ô nhập liệu. Định dạng số điện thoại là `0xx.xxxxxxx`. ví dụ: `0987654321`
+Dự án đã được tích hợp sẵn GitHub Actions CI/CD (`.github/workflows/objective-c-xcode.yml`). Mỗi khi push code lên nhánh `main`, hệ thống sẽ tự động:
+1. Biên dịch ứng dụng bằng `xcodebuild` trên môi trường macOS mới nhất.
+2. Đóng gói thành file `App-Spam-OTP.ipa`.
+3. Tải lên phần **Artifacts** của GitHub Actions để bạn có thể tải về cài đặt trực tiếp qua TrollStore, AltStore, Sideloadly hoặc Scarlet.
 
-Chọn chế độ gửi:
+---
 
-Nút Run: Gửi một lần OTP.
+## ⚠️ Tuyên bố miễn trừ trách nhiệm
 
-Nút Gạt: Gửi OTP liên tục cho đến khi bạn tắt nó.
+Ứng dụng được phát triển phục vụ mục đích học tập, nghiên cứu bảo mật và kiểm thử khả năng chịu tải của hệ thống. Người dùng tự chịu trách nhiệm về mục đích và hành vi sử dụng của mình.
 
-> [!WARNING]  
-> Tuyên bố miễn trừ trách nhiệm
-Ứng dụng này được cung cấp miễn phí và chỉ nhằm mục đích học tập và thử nghiệm. Tác giả không chịu trách nhiệm về bất kỳ hậu quả nào phát sinh từ việc sử dụng ứng dụng này. Bạn không nên sử dụng ứng dụng này để gây phiền nhiễu hoặc làm hại người khác.
+---
 
+## 💖 Donate & Tác giả
 
-## Donate
-Nếu bạn muốn ủng hộ tác giả, bạn có thể donate qua STK: **`9999991110`** (Ngân hàng MBBank).
-
-
-## Preview
-
-|                                            DEMO1                                            |                                            DEMO2                                                 |
-| :-----------------------------------------------------------------------------------------: | :-------------------------------------------------------------------------------------------------: |
-| ![](https://raw.githubusercontent.com/thanhdo1110/App-Spam-Otp/refs/heads/main/img/A%CC%89nh%20ma%CC%80n%20hi%CC%80nh%202024-12-13%20lu%CC%81c%2023.52.55.png) | ![](https://raw.githubusercontent.com/thanhdo1110/App-Spam-Otp/refs/heads/main/img/A%CC%89nh%20ma%CC%80n%20hi%CC%80nh%202024-12-13%20lu%CC%81c%2023.53.04.png) |
-
-|                                            DEMO3                                    |                                           DEMO4                                       |
-| :------------------------------------------------------------------------------------------: | :-------------------------------------------------------------------------------------------: |
-| ![](https://raw.githubusercontent.com/thanhdo1110/App-Spam-Otp/refs/heads/main/img/A%CC%89nh%20ma%CC%80n%20hi%CC%80nh%202024-12-13%20lu%CC%81c%2023.53.17.png)         | ![](https://raw.githubusercontent.com/thanhdo1110/App-Spam-Otp/refs/heads/main/img/A%CC%89nh%20ma%CC%80n%20hi%CC%80nh%202024-12-13%20lu%CC%81c%2023.54.10.png)          |
+- **Tác giả**: @YoungGumballZ (NGUYEN QUOC HUNG)
+- **MOMO / Ngân hàng**: `PSP2602016500000627`
+- **Chủ tài khoản**: NGUYEN QUOC HUNG
+- **Facebook**: [hungnq188.2k5](https://www.facebook.com/hungnq188.2k5)
