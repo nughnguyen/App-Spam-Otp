@@ -15,6 +15,7 @@
 		1E81287F2CFDE5FC0038D2A0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1E81287D2CFDE5FC0038D2A0 /* Main.storyboard */; };
 		1E8128812CFDE5FD0038D2A0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1E8128802CFDE5FD0038D2A0 /* Assets.xcassets */; };
 		1E8128842CFDE5FD0038D2A0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1E8128822CFDE5FD0038D2A0 /* LaunchScreen.storyboard */; };
+		1E8128E22CFDE5FD0038D2A0 /* endpoints.json in Resources */ = {isa = PBXBuildFile; fileRef = 1E8128E12CFDE5FD0038D2A0 /* endpoints.json */; };
 		1E8128872CFDE5FD0038D2A0 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E8128862CFDE5FD0038D2A0 /* main.m */; };
 		1E8128912CFDE5FE0038D2A0 /* xcodeapptesstTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E8128902CFDE5FE0038D2A0 /* xcodeapptesstTests.m */; };
 		1E81289B2CFDE5FE0038D2A0 /* xcodeapptesstUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E81289A2CFDE5FE0038D2A0 /* xcodeapptesstUITests.m */; };
@@ -55,6 +56,7 @@
 		1E8128802CFDE5FD0038D2A0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1E8128832CFDE5FD0038D2A0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1E8128852CFDE5FD0038D2A0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1E8128E12CFDE5FD0038D2A0 /* endpoints.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = endpoints.json; sourceTree = "<group>"; };
 		1E8128862CFDE5FD0038D2A0 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		1E81288C2CFDE5FE0038D2A0 /* xcodeapptesstTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = xcodeapptesstTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1E8128902CFDE5FE0038D2A0 /* xcodeapptesstTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = xcodeapptesstTests.m; sourceTree = "<group>"; };
@@ -125,6 +127,7 @@
 				1E8128802CFDE5FD0038D2A0 /* Assets.xcassets */,
 				1E8128822CFDE5FD0038D2A0 /* LaunchScreen.storyboard */,
 				1E8128852CFDE5FD0038D2A0 /* Info.plist */,
+				1E8128E12CFDE5FD0038D2A0 /* endpoints.json */,
 				1E8128862CFDE5FD0038D2A0 /* main.m */,
 				1E0C6FC92CFF56F300E63DD6 /* mahoa.h */,
 				1E446D472D03106900FE42CB /* URLHandler.m */,
@@ -254,6 +257,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1E8128842CFDE5FD0038D2A0 /* LaunchScreen.storyboard in Resources */,
+				1E8128E22CFDE5FD0038D2A0 /* endpoints.json in Resources */,
 				1E8128812CFDE5FD0038D2A0 /* Assets.xcassets in Resources */,
 				1E81287F2CFDE5FC0038D2A0 /* Main.storyboard in Resources */,
 			);
